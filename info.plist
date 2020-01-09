@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>de.netways.alfred.search_rocket_chat</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>67806AE2-5993-4D03-BBD4-1E835883BAA3</key>
+		<array/>
+		<key>83024FDD-D4AA-4953-BB14-6663FAD55FC3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>67806AE2-5993-4D03-BBD4-1E835883BAA3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>NETWAYS GmbH</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Search Rocket Chat</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>im</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Search Rocket Chat</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>83024FDD-D4AA-4953-BB14-6663FAD55FC3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+    activate application "Rocket.Chat"
+    tell application "System Events"
+        delay "0.1"
+        keystroke "k" using {command down}
+        delay "0.1"
+        keystroke q
+        
+        -- delay "0.1"
+        -- key code 36 -- Return
+    end tell
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>67806AE2-5993-4D03-BBD4-1E835883BAA3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>67806AE2-5993-4D03-BBD4-1E835883BAA3</key>
+		<dict>
+			<key>xpos</key>
+			<integer>590</integer>
+			<key>ypos</key>
+			<integer>285</integer>
+		</dict>
+		<key>83024FDD-D4AA-4953-BB14-6663FAD55FC3</key>
+		<dict>
+			<key>xpos</key>
+			<integer>95</integer>
+			<key>ypos</key>
+			<integer>65</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>https://github.com/NETWAYS/AlfredSearchRocketChat</string>
+</dict>
+</plist>
