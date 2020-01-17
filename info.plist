@@ -10,7 +10,7 @@
 	<dict>
 		<key>67806AE2-5993-4D03-BBD4-1E835883BAA3</key>
 		<array/>
-		<key>83024FDD-D4AA-4953-BB14-6663FAD55FC3</key>
+		<key>CCA8C958-AC92-4961-AD5B-1A01678907F6</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -37,23 +37,51 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
 				<integer>0</integer>
 				<key>keyword</key>
 				<string>im</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>query.py</string>
 				<key>subtext</key>
 				<string></string>
-				<key>text</key>
-				<string>Search Rocket Chat</string>
+				<key>title</key>
+				<string></string>
+				<key>type</key>
+				<integer>8</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>83024FDD-D4AA-4953-BB14-6663FAD55FC3</string>
+			<string>CCA8C958-AC92-4961-AD5B-1A01678907F6</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -93,12 +121,12 @@ end alfred_script</string>
 			<key>ypos</key>
 			<integer>285</integer>
 		</dict>
-		<key>83024FDD-D4AA-4953-BB14-6663FAD55FC3</key>
+		<key>CCA8C958-AC92-4961-AD5B-1A01678907F6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>95</integer>
+			<integer>210</integer>
 			<key>ypos</key>
-			<integer>65</integer>
+			<integer>95</integer>
 		</dict>
 	</dict>
 	<key>variablesdontexport</key>
