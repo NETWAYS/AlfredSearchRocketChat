@@ -10,7 +10,7 @@ import json
 from pprint import pprint as pp
 
 ALFRED_CONFIG_SECTION = 'Rocket.Chat'
-ALFRED_CONFIG_COUNT = 20;
+ALFRED_CONFIG_COUNT = 20
 ALFRED_RC_PATH = os.environ.get('ALFRED_RC_PATH', '~/.search_rocket_chat.alfred')
 
 config_file = os.path.expanduser(ALFRED_RC_PATH)
@@ -21,7 +21,10 @@ rc_url = config.get(ALFRED_CONFIG_SECTION, 'url')
 rc_user = config.get(ALFRED_CONFIG_SECTION, 'user')
 rc_auth = config.get(ALFRED_CONFIG_SECTION, 'auth')
 
-query = ' '.join(sys.argv[-1:])
+if len(sys.argv) > 1:
+    query = ' '.join(sys.argv[-1:]).lower()
+else:
+    query = ''
 
 def do_request(path, data = None):
     url = rc_url.strip('/') + path
@@ -54,18 +57,14 @@ try:
 except IndexError:
     pass
 
-
-query = query.lower()
-
 items = []
 
 # Users
 if user_query is True:
+    data = {
+        'count': ALFRED_CONFIG_COUNT
+    }
     if query:
-        data = {
-            'count': ALFRED_CONFIG_COUNT
-        }
-
         data['query'] = json.dumps({
             "$or": [
                 { "username" : {"$regex": query, "$options": "i" } },
@@ -74,7 +73,6 @@ if user_query is True:
         })
 
     users = do_request('/api/v1/users.list', data)
-
     for user in users['users']:
         items.append({
             'title': '@' + user['username'],

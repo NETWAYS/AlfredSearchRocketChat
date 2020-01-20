@@ -46,7 +46,7 @@
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>keyword</key>
@@ -60,7 +60,7 @@
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string></string>
+				<string>Loading...</string>
 				<key>script</key>
 				<string></string>
 				<key>scriptargtype</key>
@@ -70,7 +70,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string></string>
+				<string>Contacts or Channels</string>
 				<key>type</key>
 				<integer>8</integer>
 				<key>withspace</key>
@@ -88,15 +88,18 @@
 			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
-    activate application "Rocket.Chat"
+    set appName to "Rocket.Chat"
+
+    activate application appName
     tell application "System Events"
-        delay "0.1"
+        (name of processes) contains appName
+        delay "0.3"
         keystroke "k" using {command down}
-        delay "0.1"
+        delay "0.3"
         keystroke q
         
-        -- delay "0.1"
-        -- key code 36 -- Return
+        delay "0.3"
+        key code 36 -- Return
     end tell
 end alfred_script</string>
 				<key>cachescript</key>
@@ -117,9 +120,9 @@ end alfred_script</string>
 		<key>67806AE2-5993-4D03-BBD4-1E835883BAA3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>590</integer>
+			<integer>525</integer>
 			<key>ypos</key>
-			<integer>285</integer>
+			<integer>95</integer>
 		</dict>
 		<key>CCA8C958-AC92-4961-AD5B-1A01678907F6</key>
 		<dict>
