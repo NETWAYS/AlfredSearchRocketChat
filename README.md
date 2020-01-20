@@ -4,11 +4,32 @@ A simple approach to search Rocket.Chat contacts and channels.
 
 ## Alfred Search Keyword
 
-![alfred search keyword][screenshot1]
+![alfred search keyword][screenshot3]
 
-## Result
+![alfred search user][screenshot1]
 
-![Rocket.Chat result][screenshot2]
+![alfred search channel][screenshot2]
+
+### Modifier
+
+You can use prefixes like **@** or **#** for browsing users or chanels. Also
+simple regular expressions are allowed.
+
+## Configuration
+
+Create a file named ***.search_rocket_chat.alfred*** in your home directory:
+
+```bash
+cat ~/.search_rocket_chat.alfred
+[Rocket.Chat]
+url=https://url.to.rocket.chat
+user=<token_user_id>
+auth=<token>
+```
+
+Add a personal access token to it:
+
+![personal access token][token]
 
 ## License
 
@@ -38,3 +59,5 @@ SOFTWARE.
 
 [screenshot1]: screenshot1.png
 [screenshot2]: screenshot2.png
+[screenshot3]: screenshot3.png
+[token]: token.png

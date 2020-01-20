@@ -7,24 +7,22 @@ import urllib2
 import urllib
 import json
 
-from pprint import pprint as pp
-
 ALFRED_CONFIG_SECTION = 'Rocket.Chat'
 ALFRED_CONFIG_COUNT = 20
-ALFRED_RC_PATH = os.environ.get('ALFRED_RC_PATH', '~/.search_rocket_chat.alfred')
+ALFRED_RC_FILE = '.search_rocket_chat.alfred'
+ALFRED_RC_PATH = os.environ.get('ALFRED_RC_PATH', '~/' + ALFRED_RC_FILE)
 
-config_file = os.path.expanduser(ALFRED_RC_PATH)
-config = ConfigParser.ConfigParser()
-config.read(config_file)
+def throw_error(message):
+    print(json.dumps({
+        "items": [{
+            "title": message,
+            "icon": {
+                "path": "./error.png"
+            }
+        }]
+    }))
 
-rc_url = config.get(ALFRED_CONFIG_SECTION, 'url')
-rc_user = config.get(ALFRED_CONFIG_SECTION, 'user')
-rc_auth = config.get(ALFRED_CONFIG_SECTION, 'auth')
-
-if len(sys.argv) > 1:
-    query = ' '.join(sys.argv[-1:]).lower()
-else:
-    query = ''
+    sys.exit(1)
 
 def do_request(path, data = None):
     url = rc_url.strip('/') + path
@@ -36,9 +34,27 @@ def do_request(path, data = None):
         'X-User-Id': rc_user,
         'X-Auth-Token': rc_auth
     })
+    try:
+        response = urllib2.urlopen(request)
+        return json.load(response)
+    except urllib2.URLError:
+        throw_error('URL Error (URL, Auth, ...): ' + rc_url)
 
-    response = urllib2.urlopen(request)
-    return json.load(response)
+try:
+    config_file = os.path.expanduser(ALFRED_RC_PATH)
+    config = ConfigParser.ConfigParser()
+    config.read(config_file)
+
+    rc_url = config.get(ALFRED_CONFIG_SECTION, 'url')
+    rc_user = config.get(ALFRED_CONFIG_SECTION, 'user')
+    rc_auth = config.get(ALFRED_CONFIG_SECTION, 'auth')
+except ConfigParser.NoSectionError:
+    throw_error('Config file not found: ~/' + ALFRED_RC_FILE)
+
+if len(sys.argv) > 1:
+    query = ' '.join(sys.argv[-1:]).lower()
+else:
+    query = ''
 
 channel_query = True
 user_query = True
@@ -73,11 +89,12 @@ if user_query is True:
         })
 
     users = do_request('/api/v1/users.list', data)
+
     for user in users['users']:
         items.append({
             'title': '@' + user['username'],
             'arg': '@' + user['username'],
-            'subtitle': user['name'],
+            'subtitle': user['name'] + ' (' + user['status'] + ')',
             'type': 'user'
         })
 
