@@ -54,7 +54,7 @@ if len(sys.argv) > 1:
 else:
     query = ""
 
-channel_query = False
+channel_query = True
 user_query = True
 
 try:
