@@ -37,6 +37,36 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+    set appName to "Rocket.Chat"
+
+    activate application appName
+    tell application "System Events"
+        -- (name of processes) contains appName
+        delay "0.3"
+        keystroke "k" using {command down}
+        delay "0.3"
+        keystroke q
+        delay "0.3"
+        key code 49 -- space
+        key code 51 -- delete
+        key code 36 -- return
+    end tell
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>67806AE2-5993-4D03-BBD4-1E835883BAA3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -83,35 +113,6 @@
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>applescript</key>
-				<string>on alfred_script(q)
-    set appName to "Rocket.Chat"
-
-    activate application appName
-    tell application "System Events"
-        (name of processes) contains appName
-        delay "0.3"
-        keystroke "k" using {command down}
-        delay "0.3"
-        keystroke q
-        
-        delay "0.3"
-        key code 36 -- Return
-    end tell
-end alfred_script</string>
-				<key>cachescript</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.applescript</string>
-			<key>uid</key>
-			<string>67806AE2-5993-4D03-BBD4-1E835883BAA3</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -120,16 +121,16 @@ end alfred_script</string>
 		<key>67806AE2-5993-4D03-BBD4-1E835883BAA3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>525</integer>
+			<real>525</real>
 			<key>ypos</key>
-			<integer>95</integer>
+			<real>95</real>
 		</dict>
 		<key>CCA8C958-AC92-4961-AD5B-1A01678907F6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>210</integer>
+			<real>210</real>
 			<key>ypos</key>
-			<integer>95</integer>
+			<real>95</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
